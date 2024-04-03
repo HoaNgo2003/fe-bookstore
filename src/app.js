@@ -9,7 +9,7 @@ import userRouter from "./routes/user";
 import cartRouter from "./routes/cart";
 import orderRouter from "./routes/order";
 import ChuyenMuc from "./routes/ChuyenMuc";
-
+let port = process.env.PORT || 8080
 dotenv.config();
 
 const app = express();
@@ -27,5 +27,7 @@ app.use("/api/images", uploadRouter);
 app.use("/api", userRouter);
 app.use("/api/carts", cartRouter);
 app.use("/api/orders", orderRouter);
-
+app.listen(port, () => {
+    console.log('app running on port: ' + port)
+})
 export const viteNodeApp = app;
